@@ -9,8 +9,16 @@ ui <- fluidPage(
     # headerPanel("A simple Shiny App using dagitty library"),
     sidebarLayout(
 
-        sidebarPanel = sidebarPanel(
-            width = 5
+        sidebarPanel = NULL
+        # Show a plot of the generated distribution
+        , mainPanel = mainPanel(
+            p(
+                "This is a simple web app made by Min-Hyung Kim, using R libraries shiny and dagitty."
+                # , br()
+                , "The code for this web app is available in the following github page:"
+                , br()
+                , a(href = "https://github.com/mkim0710/Shiny", "https://github.com/mkim0710/Shiny")
+            )
             , p(
                 "You may use the same dag {} code syntax for the R library dagitty, which could also be used in in the following web app:"
                 , br()
@@ -50,21 +58,10 @@ HIV -> Death
 ART -> MedAdverseEffect
 MedAdverseEffect -> Death
 }'
-                , width = '300px', height = '400px'
-            )
-        )
-        # Show a plot of the generated distribution
-        , mainPanel = mainPanel(
-            width = 5
-            , p(
-                "This is a simple web app made by Min-Hyung Kim, using R libraries shiny and dagitty."
-                # , br()
-                , "The code for this web app is available in the following github page:"
-                , br()
-                , a(href = "https://github.com/mkim0710/Shiny", "https://github.com/mkim0710/Shiny")
+                , width = '400px', height = '400px'
             )
             , plotOutput(outputId = "plotOutput1")
-            , selectInput(inputId = "DownloadOption", label = "Select Download Option", choices = list("pdf","png","jpeg"))
+            , radioButtons(inputId = "DownloadOption", label = "Select Download Option", choices = list("pdf","png","jpeg"))
             , downloadButton(outputId = "downloadButton_plot", label = "Download The Plot")
             , br()
             , h3("REFERENCES")
