@@ -70,17 +70,17 @@ MedAdverseEffect -> Death
             , h3("REFERENCES")
             , p(
                 "Hernán, M.A., and Robins, J. M., 2019."
-                , br()
+                # , br()
                 , a(href = "https://www.hsph.harvard.edu/miguel-hernan/causal-inference-book/", "Causal Inference.")
-                , br()
+                # , br()
                 , em("Boca Raton: Chapman & Hall/CRC, ")
                 , "forthcoming."
             )
             , p(
                 "Textor, J., van der Zander, B., Gilthorpe, M.S., Liśkiewicz, M. and Ellison, G.T., 2016."
-                , br()
+                # , br()
                 , a(href = "http://dx.doi.org/10.1093/ije/dyw341", "Robust causal inference using directed acyclic graphs: the R package 'dagitty'.")
-                , br()
+                # , br()
                 , em("International Journal of Epidemiology, 45")
                 , "(6), pp.1887-1894."
             )
