@@ -64,8 +64,8 @@ MedAdverseEffect -> Death
                 , a(href = "https://github.com/mkim0710/Shiny", "https://github.com/mkim0710/Shiny")
             )
             , plotOutput(outputId = "plotOutput1")
-            , selectInput(inputId = "DownloadOption", label = "Select Download Option", choices = list("pdf","png","jpeg"))
-            , downloadButton(outputId = "downloadButton_plot", label = "Download The Plot")
+            # , selectInput(inputId = "DownloadOption", label = "Select Download Option", choices = list("pdf","png","jpeg"))
+            , downloadButton(outputId = "downloadButton_plot", label = "Download the code & plot in PDF")
             , br()
             , h3("REFERENCES")
             , p(
@@ -96,21 +96,25 @@ server <- function(input, output) {
     })
     
     output$downloadButton_plot <- downloadHandler(
-        #Specify The File Name 
+        #Specify The File Name
         filename = function() {
-            paste0("plot ", gsub(":", "_", Sys.time()), ".", input$DownloadOption)
+            # paste0("plot ", gsub(":", "_", Sys.time()), ".", input$DownloadOption)
+            paste0("plot ", gsub(":", "_", Sys.time()), ".", "pdf")
         }
         , content = function(file){
-            # open the format of file which needs to be downloaded ex: pdf, png etc. 
-            if (input$DownloadOption== "png"){
-                png(file)
-            } else if (input$DownloadOption== "pdf"){
-                pdf(file)
-            } else {
-                jpeg(file) 
-            }
+            # # open the format of file which needs to be downloaded ex: pdf, png etc.
+            # if (input$DownloadOption== "png"){
+            #     png(file)
+            # } else if (input$DownloadOption== "jpeg"){
+            #     jpeg(file)
+            # } else {
+            #     pdf(file)
+            # }
+            pdf(file)
+            plot(NA, xlim=c(0,10), ylim=c(0,10), bty='n', xaxt='n', yaxt='n', xlab='', ylab='')
+            text(0, 5, input$textAreaInput_dagitty_code, cex = 0.8, pos = 4)
             plot(dagitty(input$textAreaInput_dagitty_code))
-            
+
             dev.off()
         }
     )
