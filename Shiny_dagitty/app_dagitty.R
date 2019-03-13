@@ -58,10 +58,6 @@ MedAdverseEffect -> Death
             width = 5
             , p(
                 "This is a simple web app made by Min-Hyung Kim, using R libraries shiny and dagitty."
-                # , br()
-                , "The code for this web app is available in the following github page:"
-                , br()
-                , a(href = "https://github.com/mkim0710/Shiny", "https://github.com/mkim0710/Shiny")
             )
             , plotOutput(outputId = "plotOutput1")
             # , selectInput(inputId = "DownloadOption", label = "Select Download Option", choices = list("pdf","png","jpeg"))
